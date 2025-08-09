@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>R Quarto: Formatting a Book</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Formatting a Book_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Formatting a Book_files/libs/quarto-html/quarto.js"></script>
+<script src="Formatting a Book_files/libs/quarto-html/popper.min.js"></script>
+<script src="Formatting a Book_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Formatting a Book_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Formatting a Book_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Formatting a Book_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Formatting a Book_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Formatting a Book_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Formatting a Book_files/libs/bootstrap/bootstrap-c0367b04c37547644fece4185067e4a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#quarto-book" id="toc-quarto-book" class="nav-link active" data-scroll-target="#quarto-book">Quarto Book</a></li>
+  <li><a href="#step-1.-파일-준비" id="toc-step-1.-파일-준비" class="nav-link" data-scroll-target="#step-1.-파일-준비">Step 1. 파일 준비</a></li>
+  <li><a href="#step-2.-book-생성" id="toc-step-2.-book-생성" class="nav-link" data-scroll-target="#step-2.-book-생성">Step 2. Book 생성</a></li>
+  <li><a href="#step-3-github에-book-업로드" id="toc-step-3-github에-book-업로드" class="nav-link" data-scroll-target="#step-3-github에-book-업로드">Step 3: Github에 Book 업로드</a></li>
+  <li><a href="#step-4.-업로드-된-book-github로-공유하기" id="toc-step-4.-업로드-된-book-github로-공유하기" class="nav-link" data-scroll-target="#step-4.-업로드-된-book-github로-공유하기">Step 4. 업로드 된 Book, Github로 공유하기</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">R Quarto: Formatting a Book</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="quarto-book" class="level2">
+<h2 class="anchored" data-anchor-id="quarto-book">Quarto Book</h2>
+<p>quarto 파일들을 하나의 책으로 만들어 공유하기 위한 과정을 포함되어있다. 아래 과정을 따라하기 위한 예제 파일은 다운로드하여 연습해 볼 수 있다. (<a href="Data/Example.zip">예제 다운로드</a>)</p>
+</section>
+<section id="step-1.-파일-준비" class="level2">
+<h2 class="anchored" data-anchor-id="step-1.-파일-준비">Step 1. 파일 준비</h2>
+<p>Quarto html 문서를 책으로 묶기 위해서는 다음과 같은 파일들이 필요하다:</p>
+<ol type="1">
+<li>Quarto.qmd</li>
+<li>Index.qmd</li>
+<li>_quarto.yml</li>
+</ol>
+<p>책을 구성하기 위해서는 당연하게도 각각의 페이지들이 있어야 책으로 구성할 수 있다. 따라서, Quarto.qmd는 하나의 페이지로써 역할을 한다.</p>
+<p>Index.qmd는 페이지와 별개로, 책을 구성하기 위한 필수 파일은 아니다. Index는 없어도 그만이지만 책의 소개 역할을 한다.</p>
+<p><em>quarto.yml은 책을 구성하기 위한 필수 파일이다.</em> <code>quarto.yml</code>은 R에서 따로 만들 수 있는 파일은 아니고, 직접 확장자명인 <code>.yml</code>을 넣어서 저장해야 한다. <code>_quarto.yml</code>은 책의 전체 설정 (책 제목, 목차, 포멧, 또는 테마)을 포함한다. 해당 파일의 포멧은 여기서 다운. (<a href="Data/_quarto.yml.zip">_quarto.yml 다운로드</a>)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-3861969601.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+<p>3개의 파일들은 <strong>한</strong> <strong>폴더안에 유지</strong>하면 된다.</p>
+</section>
+<section id="step-2.-book-생성" class="level2">
+<h2 class="anchored" data-anchor-id="step-2.-book-생성">Step 2. Book 생성</h2>
+<p>파일이 준비 되었으니, R에서 실행해보자. <code>.yml</code> 확장자는 R에서 인식하기 힘들기 때문에 외부 확장자로 열릴 수 있다. R에서 편집하기 위해서는 <code>.qmd</code> 파일 중 아무거나 하나를 클릭하여 R로 오픈한 뒤, 우측 하단 Files에서 <code>_quarto.yml</code>을 클릭하면 R에서 열 수 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>R에서 모든 파일이 열린다면 <code>_quarto.yml</code>을 다음과 같이 추가하고자 하는 모든 <code>.qmd</code>를 목차에 알맞게 넣어주고, 글로벌 새팅을 완료해 주면 된다. 이때, <code>_quarto.yml</code>은 목록에 포함되지 않고, 같은 폴더에 위치하기만 하면 된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%202.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>수정된 <code>_quarto.yml</code>을 저장하고, <code>index.qmd</code> 또는 아무 <code>.qmd</code> 파일에서 랜더 버튼(<img src="images/clipboard-2815474941.png" class="img-fluid" width="50">)을 클릭하면 아래와 같이 <code>_book</code> 폴더가 자동으로 생성된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%203.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="200"></p>
+</figure>
+</div>
+</section>
+<section id="step-3-github에-book-업로드" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-github에-book-업로드">Step 3: Github에 Book 업로드</h2>
+<p>Github로 생성된 book을 공유하기 위해서는 <code>_book</code>폴더에 있는 모든 파일을 github에 업로드하면 된다.</p>
+<p>깃허브에 로그인하고, Repositories로 들어가서 생성 버튼(<img src="images/clipboard-293216328.png" class="img-fluid" width="50">)을 누른다. 누른 다음 아래와 같은 화면이 나오고, 설정은 빨간 네모만 해주면 된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%204.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<ul>
+<li>Repository name은 사용자 임의로 지정.</li>
+<li>Choose visibility는 Public 또는 Privacy를 고를 수 있는데, 유료 회원이고 데이터를 보여주기 않으려면 privacy로 선택가능. 무료 회원은 Public만 가능.</li>
+<li>Add README는 필수적으로 On.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%206.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>생성이 완료되었고, 이제 파일 업로드 하면 된다. 해당 페이지에서 <code>Add file</code>를 클릭하여 <code>Upload files</code>를 선택.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-647335208.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>한 번 업로드 되는 파일의 용량이 <strong>25MB</strong>가 넘지 않아야 함. 25MB가 넘는다면, Github앱을 컴퓨터에 설치하여 업로드 가능.</p>
+</div>
+</div>
+<p>각 <code>.html</code>은 개별적으로 마우스를 끌어다 놓아도 가능하고, choose your files 버튼을 통해 업로드 해도 된다.</p>
+<p><code>site_libs</code>는 폴더 자체를 끌어다 놓으면 쉽게 업로드 가능. Commit changes (<img src="images/clipboard-2513039885.png" width="50" height="11">)클릭.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%207-01.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>위와 같이 업로드가 완료 되었다면, 공유할 준비가 완료 되었다.</p>
+<p>공유할 수 있는 인터넷 주소를 생성하기 위해, 빨간 네모의 <code>Settings</code> 클릭.</p>
+</section>
+<section id="step-4.-업로드-된-book-github로-공유하기" class="level2">
+<h2 class="anchored" data-anchor-id="step-4.-업로드-된-book-github로-공유하기">Step 4. 업로드 된 Book, Github로 공유하기</h2>
+<p>경로를 다음과 같다. <code>Settings -&gt; Pages -&gt; Branch</code>에서 None을 main으로 바꾼 뒤, Save 클릭.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%208.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>Save 버튼을 클릭하면, github가 자동으로 공유할 수 있는 url을 생성한다. 생성되는 과정은 상단에 있는 Actions 버튼을 통해 확인 할 수 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-686081140.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>업로드된 파일 크기에 따라 deploy에 걸리는 시간이 늘어난다. 완료 되면, 아래와 같이 바뀐다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1673785325.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>다시, <code>Settings -&gt; Pages</code>로 돌아가면 상단에 아래와 같이 book을 공유할 수 있는 url이 생성되어 있다.</p>
+<p><img src="images/clipboard-2861726091.png" class="img-fluid"></p>
+<p>Github를 통해 생성한 book 공유는 끝났다.</p>
+<p>한 가지 팁으로, 공유 url은 <code>Settings -&gt; Pages</code>로 확인 할 수 있지만, Repositories화면에서 바로 공유할 url을 확인 가능하게 할 수 있다.</p>
+<p>해당 Repositories 메인 화면으로 돌아가면, 우측 About에 톱니바퀴를 눌러보자.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%209.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="2000"></p>
+</figure>
+</div>
+<p>톱니바퀴를 클릭하면, Edit repository details 팝업창이 뜨는데, 여기서 <strong><code>Use your GitHub Pages website</code></strong>만 체크해주면 된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Screenshot%2010.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="300"></p>
+</figure>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<script src="Formatting a Book_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
